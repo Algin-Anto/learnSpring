@@ -11,13 +11,11 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class JavaGameApplication01 {
 
     public static void main(String[] args) {
-       var context=new AnnotationConfigApplicationContext(GamingConfiguration.class);
-       context.getBean(GamingConsole.class).up();
-//		var game=new MarioGame();
-//		var game=new SuperContraGame();
-//        var game = new PacMan();
-//        var gameRunner = new GameRunner(game);
-//        gameRunner.run();
-    }
+        try (var context = new AnnotationConfigApplicationContext(GamingConfiguration.class)) {
 
+            context.getBean(GamingConsole.class).up();
+            context.getBean(GameRunner.class).run();
+
+        }
+    }
 }
